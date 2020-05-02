@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+	function computerPlay(){
+        array = ["rock", "paper", "scissors"];
+        random = array[Math.floor(Math.random()*array.length)];
+        return random
+    }
+
+    function capitalise(word) {
+		first = word.charAt(0).toUpperCase();
+		rest = word.substring(1).toLowerCase();
+		return first + rest;
+	}
+
+
+    function playRound(playerSelection, computerSelection){
+
+        if (playerSelection.toLowerCase() === computerSelection) {
+            return(`${capitalise(playerSelection)} and ${computerSelection}? Guess it's a draw!`);
+        } else if (playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") {
+            return ("Rock beats scissors - you win!");
+        } else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper") {
+            return ("Scissors beats paper - you win!");
+        } else if (playerSelection.toLowerCase() === "paper" && computerSelection === "rock") {
+            return ("Paper beats rock - you win!");
+        } else {
+            return (`${capitalise(computerSelection)} beats ${playerSelection.toLowerCase()} - you lose!`);
+        } 
+    }
+
+    function game(){
+        for (let i = 0; i < 5; i++) {
+            let player = prompt("Rock, paper or scissors?");
+            
+            if (player.toLowerCase() == "rock" || player.toLowerCase() == "paper" || player.toLowerCase() == "scissors") {
+                let computer = computerPlay();
+                let result = playRound(player, computer)
+                console.log(result)
+            } else {
+                alert("Erm...maybe try again?");
+            }
+
+            
+        }
+    }
+
+    console.log(game())
+  </script>
+</body>
+</html>
